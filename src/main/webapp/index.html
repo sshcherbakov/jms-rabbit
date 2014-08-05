@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>JMS Example</title>
+	<!--<link rel="stylesheet" href="style.css" />-->
+	<!--[if IE]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+	
+	<script type="text/javascript" language="javascript">
+	// <![CDATA[
+		function send() {
+			var p = $("#payload").val();
+			
+			$.get("send", 
+				{'payload': p},
+				function(data) {
+					refresh();
+				}
+			);
+			$("#payload").val("");
+		}
+
+		function refresh() {
+			$.get("read", {},
+				function(data) {
+					$("#queue").val(data);
+				}
+			);
+		}
+	// ]]>
+	</script>
+
+
+</head>
+<body>
+
+<div>
+	<input id="payload" type="text" />
+	<input type="button" value="Send" onClick="send();" />
+</div>
+
+<div>
+	<textarea id="queue" cols="60" rows="10"></textarea>
+	<input type="button" value="Refresh" onClick="refresh();" />
+</div>
+
+</body>
+</html>

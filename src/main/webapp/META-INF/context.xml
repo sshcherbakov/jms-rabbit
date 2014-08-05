@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+    <!-- Specify a JMS Connection  -->
+    <Resource name="jms/myrabbit" 
+          type="javax.jms.ConnectionFactory" 
+          factory="com.rabbitmq.jms.admin.RMQObjectFactory" 
+          username="guest" 
+          password="guest" 
+          virtualHost="/" 
+          host="localhost" 
+          ssl="false"
+    />
+
+    <Resource name="jms/test_queue"
+          type="javax.jms.Queue"
+          factory="com.rabbitmq.jms.admin.RMQObjectFactory"
+          destinationName="test_queue"
+          amqp="false"
+    />
+
+</Context>
